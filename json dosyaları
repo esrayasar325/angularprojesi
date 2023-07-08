@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent {
+  kullaniciAdi: string;
+  sifre: string;
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  girisYap(): void {
+    if (this.authService.girisYap(this.kullaniciAdi, this.sifre)) {
+      this.router.navigate(['/hasta-kayit']);
+    } else {
+      alert('Kullanıcı adı veya şifre hatalı!');
+    }
+  }
+}
