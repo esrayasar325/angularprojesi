@@ -1,0 +1,22 @@
+CREATE TABLE Kullanicilar (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  kullaniciAdi VARCHAR(50) NOT NULL,
+  sifre VARCHAR(50) NOT NULL
+);
+CREATE TABLE HastaKayitlari (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  ad VARCHAR(50) NOT NULL,
+  soyad VARCHAR(50) NOT NULL,
+  dogumTarihi DATE NOT NULL,
+  telefon VARCHAR(20) NOT NULL,
+  -- Diğer hasta bilgileri sütunları
+);
+INSERT INTO Kullanicilar (kullaniciAdi, sifre)
+VALUES ('admin', '12345');
+INSERT INTO HastaKayitlari (ad, soyad, dogumTarihi, telefon, 
+VALUES ('', '', '', '', );
+SELECT * FROM HastaKayitlari;
+SELECT * FROM HastaKayitlari WHERE id = 1;
+DELETE FROM HastaKayitlari WHERE id = 1;
+
+
