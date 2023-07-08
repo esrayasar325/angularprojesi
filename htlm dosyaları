@@ -1,0 +1,116 @@
+<h2>Hasta Kayıt</h2>
+<form (submit)="hastaKaydet()">
+  <label>Ad:</label>
+  <input type="text" [(ngModel)]="yeniHasta.ad" required>
+
+  <label>Soyad:</label>
+  <input type="text" [(ngModel)]="yeniHasta.soyad" required>
+
+  <label>Doğum Tarihi:</label>
+  <input type="date" [(ngModel)]="yeniHasta.dogumTarihi" required>
+
+  <label>Telefon:</label>
+  <input type="tel" [(ngModel)]="yeniHasta.telefon" required>
+
+  <button type="submit">Kaydet</button>
+  <div class="container">
+  <h2>Hasta Kaydı Oluşturma Formu</h2>
+  <form (ngSubmit)="kaydet()">
+    <div class="form-group">
+      <label for="ad">Ad:</label>
+      <input type="text" id="ad" name="ad" class="form-control" [(ngModel)]="hasta.ad" required>
+    </div>
+    <!-- Diğer form alanları buraya eklenebilir -->
+    <div class="form-group">
+      <label for="hastalik">Hastalık:</label>
+      <input type="text" id="hastalik" name="hastalik" class="form-control" [(ngModel)]="hasta.hastalik" required>
+    </div>
+    <div class="form-group">
+      <label for="hastalikSure">Hastalığı Geçirdiği Süre (ay):</label>
+      <input type="number" id="hastalikSure" name="hastalikSure" class="form-control" [(ngModel)]="hasta.hastalikSure" required>
+    </div>
+    <div class="form-group">
+      <label for="ilacAd">İlaç Adı:</label>
+      <input type="text" id="ilacAd" name="ilacAd" class="form-control" [(ngModel)]="ilac.ad">
+    </div>
+    <div class="form-group">
+      <label for="ilacDozaj">İlaç Dozajı:</label>
+      <input type="text" id="ilacDozaj" name="ilacDozaj" class="form-control" [(ngModel)]="ilac.dozaj">
+    </div>
+    <div class="form-group">
+      <label for="ilacSure">İlaç Kullanım Süresi (gün):</label>
+      <input type="number" id="ilacSure" name="ilacSure" class="form-control" [(ngModel)]="ilac.kullanımSuresi">
+    </div>
+    <button type="button" class="btn btn-primary" (click)="ilacEkle()">İlaç Ekle</button>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Sıfırla</button>
+    <div class="container">
+  <h2>Hasta Kaydı Oluşturma Formu</h2>
+  <form (ngSubmit)="kaydet()">
+    <div class="form-group">
+      <label for="ad">Ad:</label>
+      <input type="text" id="ad" name="ad" class="form-control" [(ngModel)]="hasta.ad" required>
+    </div>
+    <!-- Diğer form alanları buraya eklenebilir -->
+    <div class="form-group">
+      <label for="hastalik">Hastalık:</label>
+      <input type="text" id="hastalik" name="hastalik" class="form-control" [(ngModel)]="hasta.hastalik" required>
+    </div>
+    <div class="form-group">
+      <label for="hastalikSure">Hastalığı Geçirdiği Süre (ay):</label>
+      <input type="number" id="hastalikSure" name="hastalikSure" class="form-control" [(ngModel)]="hasta.hastalikSure" required>
+    </div>
+    <div class="form-group">
+      <label for="muayeneDoktorAd">Muayene Eden Doktorun Adı:</label>
+      <input type="text" id="muayeneDoktorAd" name="muayeneDoktorAd" class="form-control" [(ngModel)]="hasta.muayeneDoktoru.ad" required>
+    </div>
+    <div class="form-group">
+      <label for="muayeneDoktorSoyad">Muayene Eden Doktorun Soyadı:</label>
+      <input type="text" id="muayeneDoktorSoyad" name="muayeneDoktorSoyad" class="form-control" [(ngModel)]="hasta.muayeneDoktoru.soyad" required>
+    </div>
+    <div class="form-group">
+      <label for="muayeneDoktorAsistan">Muayene Eden Doktorun Asistanı:</label>
+      <input type="text" id="muayeneDoktorAsistan" name="muayeneDoktorAsistan" class="form-control" [(ngModel)]="hasta.muayeneDoktoru.asistan" required>
+    </div>
+    <div class="form-group">
+      <label for="hastane">Muayene Olduğu Hastane:</label>
+      <input type="text" id="hastane" name="hastane" class="form-control" [(ngModel)]="hasta.hastane" required>
+    </div>
+    <div class="form-group">
+      <label for="ilacAd">İlaç Adı:</label>
+      <input type="text" id="ilacAd" name="ilacAd" class="form-control" [(ngModel)]="ilac.ad">
+    </div>
+    <div class="form-group">
+      <label for="ilacDozaj">İlaç Dozajı:</label>
+      <input type="text" id="ilacDozaj" name="ilacDozaj" class="form-control" [(ngModel)]="ilac.dozaj">
+    </div>
+    <div class="form-group">
+      <label for="ilacSure">İlaç Kullanım Süresi (gün):</label>
+      <input type="number" id="ilacSure" name="ilacSure" class="form-control" [(ngModel)]="ilac.kullanımSuresi">
+    </div>
+    <div class="form-group">
+      <label for="ilacBaslamaTarihi">İlaç Kullanmaya Başlama Tarihi:</label>
+      <input type="date" id="ilacBaslamaTarihi" name="ilacBaslamaTarihi" class="form-control" [(ngModel)]="ilac.baslamaTarihi">
+    </div>
+    <button type="button" class="btn btn-primary" (click)="ilacEkle()">İlaç Ekle</button>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Sıfırla</button>
+  </form>
+</div>
+
+  </form>
+</div>
+
+</form>
+<h2>Giriş Yap</h2>
+<form (submit)="girisYap()">
+  <div>
+    <label>Kullanıcı Adı:</label>
+    <input type="text" [(ngModel)]="kullaniciAdi" required>
+  </div>
+  <div>
+    <label>Şifre:</label>
+    <input type="password" [(ngModel)]="sifre" required>
+  </div>
+  <button type="submit">Giriş Yap</button>
+</form>
