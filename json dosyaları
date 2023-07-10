@@ -1,23 +1,85 @@
-import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { AnasayfaComponent } from './anasayfa/anasayfa.component';
+import { MusteriListesiComponent } from './musteri-listesi/musteri-listesi.component';
+
+const routes: Routes = [
+  { path: '', component: AnasayfaComponent },
+  { path: 'musterilistesi', component: MusteriListesiComponent },
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AnasayfaComponent,
+    MusteriListesiComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+// ana sayfa import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-anasayfa',
+  templateUrl: './anasayfa.component.html',
+  styleUrls: ['./anasayfa.component.css']
 })
-export class LoginComponent {
-  kullaniciAdi: string;
-  sifre: string;
+export class AnasayfaComponent {
+  kullaniciAdi: string = '';
+  sifre: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router) {}
 
-  girisYap(): void {
-    if (this.authService.girisYap(this.kullaniciAdi, this.sifre)) {
-      this.router.navigate(['/hasta-kayit']);
+  girisYap() {
+    // Kullanıcı giriş işlemleri burada gerçekleştirilebilir
+    // Örnek olarak, kullanıcı adı ve şifre kontrolü yapılabilir
+    if (this.kullaniciAdi === 'admin' && this.sifre === '12345') {
+      // Kullanıcı girişi başarılı olduğunda yönlendirme yapılacak sayfaya yönlendirilir
+      this.router.navigate(['/musterilistesi']);
     } else {
-      alert('Kullanıcı adı veya şifre hatalı!');
+      // Kullanıcı girişi başarısız olduğunda hata mesajı gösterilebilir
+      console.log('Kullanıcı adı veya şifre hatalı');
     }
   }
 }
+// müşteri listesi
+import { Component, OnInit } from '@angular/core';
+import { MusteriService } from '../musteri.service';
+
+@Component({
+  selector: 'app-musteri-listesi',
+  templateUrl: './musteri-listesi.component.html',
+  styleUrls: ['./musteri-listesi.component.css']
+})
+export class MusteriListesiComponent implements OnInit {
+  musteriler: any[];
+
+  constructor(private musteriService: MusteriService) {}
+
+  ngOnInit() {
+    this.getMusteriler();
+  }
+
+  getMusteriler() {
+    this.musteriService.getMusteriler().subscribe(
+      (musteriler: any[]) => {
+        this.musteriler = musteriler;
+      },
+      (error) => {
+        console.log('Müşteriler alınırken hata oluştu:', error);
+      }
+    );
+  }
+}
+
