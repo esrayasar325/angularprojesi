@@ -1,22 +1,20 @@
-CREATE TABLE Kullanicilar (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  kullaniciAdi VARCHAR(50) NOT NULL,
-  sifre VARCHAR(50) NOT NULL
+CREATE TABLE Musteriler (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Ad VARCHAR(50),
+  Konum VARCHAR(100),
+  Tur VARCHAR(50),
+  BorcDurumu VARCHAR(50)
 );
-CREATE TABLE HastaKayitlari (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  ad VARCHAR(50) NOT NULL,
-  soyad VARCHAR(50) NOT NULL,
-  dogumTarihi DATE NOT NULL,
-  telefon VARCHAR(20) NOT NULL,
-  -- Diğer hasta bilgileri sütunları
-);
-INSERT INTO Kullanicilar (kullaniciAdi, sifre)
-VALUES ('admin', '12345');
-INSERT INTO HastaKayitlari (ad, soyad, dogumTarihi, telefon, 
-VALUES ('', '', '', '', );
-SELECT * FROM HastaKayitlari;
-SELECT * FROM HastaKayitlari WHERE id = 1;
-DELETE FROM HastaKayitlari WHERE id = 1;
 
+INSERT INTO Musteriler (Ad, Konum, Tur, BorcDurumu)
+VALUES ('Müşteri 1', 'İstanbul', 'Sadık', 'Borcu Yok'),
+       ('Müşteri 2', 'Ankara', '1 Kereye Özel', 'Borcu Var');
 
+UPDATE Musteriler
+SET Ad = 'Yeni Ad', Konum = 'Yeni Konum', Tur = 'Yeni Tür', BorcDurumu = 'Borcu Yok'
+WHERE ID = 1;
+
+DELETE FROM Musteriler
+WHERE ID = 2;
+
+SELECT * FROM Musteriler;
